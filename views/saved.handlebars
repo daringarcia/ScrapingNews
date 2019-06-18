@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse"
+            aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar-main-collapse">
+            <ul class="navbar-nav align-items-lg-center">
+                <li class="nav-item" style="padding-top:30px;">
+                    <a class="nav-item nav-link active" href="/">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid text-center">
+  <h1 class="display-4">The Scraping News</h1>
+  <p class="lead">All The News That's Fit To Scrape</p>
+</div>
+
+<div class="container">
+  <h3>Saved articles</h3>
+  {{#each articles}}
+    <div class="card bg-light mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{title}}</h5>
+        <a href="{{link}}" class="card-link" target="_blank">Read complete article</a>
+        <p class="card-text">{{intro}}...</p>
+        <a data-articleId= {{_id}} class="btn btn-primary unsave-btn">Remove from list</a>
+        <a data-articleId= {{_id}} class="btn btn-primary note-modal-btn" data-toggle="modal">Add comment</a>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+
+<div id="add-note-modal" class="modal" tabindex="-1" role="dialog" data-articleId="">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="note-modal-title" class="modal-title"></h5>
+      </div>
+      <div class="modal-body container">
+        <ul class="notes-list">
+        </ul>
+        <div class="form-group">
+          <label for="note-area">New comment</label>
+          <textarea name="new-note-area" class="form-control" id="note-body" rows="2" required></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary note-save-btn" data-dismiss="modal">Save</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
